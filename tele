@@ -1,0 +1,19 @@
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
+
+def checkin(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text('Checked in!')
+
+def checkout(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text('Checked out!')
+
+def main() -> None:
+    updater = Updater(5830640217:AAEXU8xFLz0peIGhj6gjDMCyf1Zn9h75OJk)
+    dispatcher = updater.dispatcher
+    dispatcher.add_handler(CommandHandler("checkin", checkin))
+    dispatcher.add_handler(CommandHandler("checkout", checkout))
+    updater.start_polling()
+    updater.idle()
+
+if __name__ == '__main__':
+    main()
